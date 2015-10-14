@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Jennifer & Maximillian
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .hero
+          %h1 Jennifer & Maximillian
+          %h3 17.09.16
+
+
+      .row
+        .page-container
+          .row
+            .links-container
+              %ul
+                %li= link_to "Home", '#', class: 'selected'
+                %li= link_to "Venue", '#'
+                %li= link_to "Accomodation", '#'
+                %li= link_to "R.S.V.P", '#'
+                %li= link_to "Gifts", '#'
+
+          .row
+            .page
+              =yield
+    =yield(:page_bottom) if content_for?(:page_bottom)
+    = yield(:page_bottom) if content_for?(:page_bottom)
+    = javascript_include_tag 'application'
+    = yield(:after_javascript_load) if content_for?(:after_javascript_load)

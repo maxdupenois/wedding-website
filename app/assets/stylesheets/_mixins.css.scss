@@ -1,0 +1,17 @@
+@mixin when-bigger-than-mobile{
+  @media all and (min-width: $screen-sm-min){
+    @content;
+  }
+}
+
+@mixin when-bigger-than-tablet{
+  @media all and (min-width: $screen-md-min){
+    @content;
+  }
+}
+
+@mixin when-bigger-than-small-desktop {
+  @media all and (min-width: $screen-lg-min){
+    @content;
+  }
+}
