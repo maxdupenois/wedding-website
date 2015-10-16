@@ -1,11 +1,11 @@
 $silver: #dddbdb;
 @font-face {
   font-family: 'chopinscriptmedium';
-  src: url('/assets/chopinscript-webfont.eot');
-  src: url('/assets/chopinscript-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/assets/chopinscript-webfont.woff') format('woff'),
-    url('/assets/chopinscript-webfont.ttf') format('truetype'),
-    url('/assets/chopinscript-webfont.svg#chopinscriptmedium') format('svg');
+  src: asset-url('chopinscript-webfont.eot');
+  src: asset-url('chopinscript-webfont.eot?#iefix') format('embedded-opentype'),
+    asset-url('chopinscript-webfont.woff') format('woff'),
+    asset-url('chopinscript-webfont.ttf') format('truetype'),
+    asset-url('chopinscript-webfont.svg#chopinscriptmedium') format('svg');
   font-weight: normal;
   font-style: normal;
 }
