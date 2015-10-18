@@ -1,0 +1,26 @@
+.row
+  .col-sm-12
+    %h2 R.S.V.P.
+.row
+  .col-sm-offset-2.col-sm-8
+    - rsvp.errors.full_messages.each do |err|
+      .alert.alert-danger
+        = err
+    = form_for rsvp do |f|
+      %fieldset
+        .form-group
+          = f.text_field :name, placeholder: "Who are you?", class: 'form-control'
+        .form-group
+          = f.text_area :extra, placeholder: "Extraneous details (allergies, vegetarianism, veganism, cannabilism, phobias, blackmail material, etc.)", class: 'form-control'
+        .form-group
+          = label_tag 'rsvp_response_coming', "Wild horses would not prevent my presence."
+          = f.radio_button :response, :coming
+        .form-group
+          = label_tag 'rsvp_fear_of_horses', "I'll be there but am literally terrified of wild horses."
+          = f.radio_button :response, :coming, id: 'rsvp_fear_of_horses'
+        .form-group
+          = label_tag 'rsvp_response_not_coming', "Due to reasons beyond mortal ken I regret that I am unable to grace Ponsbourne with my presence, please accept my deepest held apologies."
+          = f.radio_button :response, :not_coming
+        .form-group
+          = f.submit 'R.S.V.P', class: 'btn btn-info pull-right'
+

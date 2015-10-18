@@ -1,0 +1,16 @@
+.row
+  .col-sm-12
+    %h2 R.S.V.Ps
+    %table.table.rsvp-table
+      %thead
+        %tr
+          %th Name
+          %th Extra
+          %th Response
+      %tbody
+        - rsvps.each do |rsvp|
+          %tr{ class: rsvp.response }
+            %td= rsvp.name
+            %td= rsvp.extra
+            %td= rsvp.response.humanize
+

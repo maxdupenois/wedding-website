@@ -1,4 +1,12 @@
 .row
+  - if rsvp
+    .row
+      .col-sm-offset-2.col-sm-8
+        .alert.alert-info.text-center
+          - if rsvp.response.to_sym == :coming
+            %p Thank you for your response, we look forward to seeing you there.
+          - else
+            %p Thank you for responding, hopefully we'll see you soon even if you can't be at our wedding.
   .col-sm-6
     .welcome
       %p
@@ -7,7 +15,7 @@
         intuit it from the aether. If that yields no informative fruit you can
         try emailing us.
       %p.text-center
-        %i Please don't forget to <a href='#'>R.S.V.P</a>
+        %i Please don't forget to <a href="#{new_rsvp_path}">R.S.V.P</a>
   .col-sm-6
     .welcome-image
       = image_tag('crete.png')

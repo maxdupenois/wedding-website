@@ -17,11 +17,11 @@
           .row
             .links-container
               %ul
-                %li= link_to "Home", '#', class: 'selected'
-                %li= link_to "Venue", '#'
-                %li= link_to "Accomodation", '#'
-                %li= link_to "R.S.V.P", '#'
-                %li= link_to "Gifts", '#'
+                %li= link_to "Home", root_path, class: link_class('home#index')
+                %li= link_to "Venue", venue_path, class: link_class('home#venue')
+                %li= link_to "Accomodation", accomodation_path, class: link_class('home#accomodation')
+                %li= link_to "R.S.V.P.", new_rsvp_path, class: link_class('rsvps#.*')
+                %li= link_to "Gifts", gifts_path, class: link_class('home#gifts')
 
           .row
             .page

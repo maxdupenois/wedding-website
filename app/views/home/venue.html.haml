@@ -1,0 +1,71 @@
+.row
+  .col-sm-12
+    %h1 Venue
+
+.row
+  .col-sm-6
+    %h4 The wedding ceremony, wedding breakfast#{rand < 0.5 ? ',' : ''} and evening reception will be at:
+    %address
+      Ponsbourne Park Hotel<br/>
+      Newgate Street Village<br/>
+      Nr Hertford
+
+
+    %h2 Directions
+    %h3 By Car
+    %h4 For travel using a Sat Nav, please use the following postcode: <i>SG13 8RA</i>
+    %h4 From the M25 Clockwise
+    %p
+      Exit at junction 24, at roundabout head for the A111 towards Potters Bar.
+      After half a mile turn right at traffic lights onto A1000, after half a
+      mile bear right (right-hand fork) at traffic lights onto the B156 towards
+      Cuffley. After approx 1.5 miles turn left immediately after the Sun Inn
+      onto Vineyards Road. When you reach the crossroads continue straight
+      across onto Carbone Hill, following Newgate Street Village signs. At mini
+      roundabout in Newgate Street, turn right past the coach and Horses pub
+      then immediately left into Ponsbourne Drive. We are situated on the left
+      about 1/2 a mile up.
+
+    %h4 From the M25 Anticlockwise
+    %p
+      Exit at junction 25. At the roundabout take the 3rd exit and head onto
+      the A10 towards Hertford. After half a mile exit left (first exit) at the
+      roundabout onto the B198. Continue straight over the next roundabout by
+      St Mary’s school. At the second roundabout exit left (first exit) onto
+      the B156 towards Goffs Oak. At the mini roundabout by the war memorial,
+      take the right (second) exit onto Newgate Street Road. Continue to the
+      T-junction at the end and turn left onto Darnicle Hill. Proceed under the
+      railway bridge and up the hill.  Before the mini roundabout, turn into
+      Ponsbourne Drive - second right drive (before the Coach and Horses). We
+      are situated approximately 1/2 a mile along on the left hand side.
+
+    %h4 By Rail
+    %p
+      Ponsbourne Park is situated 5 miles from Cuffley station. Trains run
+      directly to Cuffley on the Moorgate and Kings Cross/Royston line.
+    %p
+      If you require a taxi please contact our reception team: 01707 876191
+
+    %h4 By Air
+    %p
+      Ponsbourne Park is approximately 35 minutes from Luton Airport and 40 minutes from Heathrow.
+  .col-sm-6
+    %iframe#map(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9884.010876319891!2d-0.11545740975515892!3d51.732985616904266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x7a6f42a368ac6633!2sPonsbourne+Park+Hotel!5e0!3m2!1sen!2suk!4v1445167001557" frameborder="0" style="border:0" allowfullscreen)
+
+-#=content_for(:after_javascript_load) do
+  %script{ src: "https://maps.googleapis.com/maps/api/js" }
+  :javascript
+    $(function(){
+      var initGoogleMap = function(){
+        var mapCanvas = document.getElementById('map');
+        var lat = 51.7297961;
+        var lng = -0.1245125;
+        var mapOptions = {
+          center: new google.maps.LatLng(lat, lng),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+      };
+      google.maps.event.addDomListener(window, 'load', initGoogleMap);
+    });

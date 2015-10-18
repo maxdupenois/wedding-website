@@ -1,0 +1,34 @@
+.page {
+  h1 {
+    font-family: 'chopinscriptmedium';
+    font-size: 3.5em;
+  }
+  h2 {
+    font-family: 'chopinscriptmedium';
+    font-size: 2.8em;
+  }
+  h3 {
+  }
+  h4 {
+  }
+  p {
+    font-size: 1.1em;
+    text-indent: 1em;
+  }
+  address {
+    font-size: 1.2em;
+    border: 1px solid $silver;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  dl {
+    border-left: 3px solid $silver;
+    padding-left: 10px;
+    dt {
+      font-size: 1.1em;
+    }
+    dd {
+      margin-bottom: 10px;
+    }
+  }
+}
