@@ -61,6 +61,7 @@ body{
   background-color: #666;
   ul {
     margin: 0px;
+    padding: 0px;
     text-align: right;
     li {
       margin: 0px;
@@ -70,7 +71,10 @@ body{
       a {
         display: inline-block;
         padding: 8px 5px;
-        font-size: 1.2em;
+        font-size: 0.8em;
+        @include when-bigger-than-mobile{
+          font-size: 1.2em;
+        }
         text-decoration: none;
         text-transform: uppercase;
         color: #fff;
