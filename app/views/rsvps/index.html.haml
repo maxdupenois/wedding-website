@@ -1,16 +1,19 @@
 .row
   .col-sm-12
     %h2 R.S.V.Ps
+    %p Current count: <strong>#{rsvps.count}</strong>
     %table.table.rsvp-table
       %thead
         %tr
           %th Name
           %th Extra
           %th Response
+          %th Replied at
       %tbody
         - rsvps.each do |rsvp|
           %tr{ class: rsvp.response }
             %td= rsvp.name
             %td= rsvp.extra
             %td= rsvp.response.humanize
+            %td= rsvp.created_at.to_formatted_s(:short)
 

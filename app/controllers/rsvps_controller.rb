@@ -3,7 +3,7 @@ class RsvpsController < ApplicationController
     password: Rails.application.secrets.auth_password, only: :index
 
   def index
-    render :index, locals: { rsvps: Rsvp.all }
+    render :index, locals: { rsvps: Rsvp.order('name desc') }
   end
 
   def new
