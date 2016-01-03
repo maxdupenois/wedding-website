@@ -1,8 +1,24 @@
 .rsvp-table{
   tr.coming {
-    background-color: #9CF99C;
+    background-color: #D0F7B3;
   }
   tr.not_coming {
-    background-color: #ccc;
+    background-color: #EAE9E9;
+  }
+}
+
+.my-progress-bar{
+  border: 2px solid #D6D3D3;
+  width: 80%;
+  height: 30px;
+  margin: 20px auto;
+  border-radius: 7px;
+  .my-progress-bar-inner{
+    height: 26px;
+    background-color: #82AFF3;
+    border-radius: 5px 0px 0px 5px;
+    &.complete{
+      border-radius: 5px 5px 5px 5px;
+    }
   }
 }

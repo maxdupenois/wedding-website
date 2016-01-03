@@ -1,7 +1,10 @@
 .row
   .col-sm-12
     %h2 R.S.V.Ps
-    %p Current count: <strong>#{rsvps.count}</strong>
+    %p Currently <strong>#{rsvps.count}</strong>/#{expected}
+    .my-progress-bar
+      .my-progress-bar-inner{ style: "width: #{progress}%;",
+        class: rsvps.count >= expected ? 'complete' : '' }
     %table.table.rsvp-table
       %thead
         %tr
@@ -15,5 +18,8 @@
             %td= rsvp.name
             %td= rsvp.extra
             %td= rsvp.response.humanize
-            %td= rsvp.created_at.to_formatted_s(:short)
+            - if rsvp.created_at
+              %td= rsvp.created_at.to_formatted_s(:short)
+            - else
+              %td -
 
