@@ -3,7 +3,7 @@ class RsvpsController < ApplicationController
     password: Rails.application.secrets.auth_password, only: :index
 
   def index
-    expected = ENV['EXPECTED_RSVP_COUNT'] || 10
+    expected = (ENV['EXPECTED_RSVP_COUNT'] || 10).to_i
     render :index, locals: {
       rsvps: Rsvp.order('name desc'),
       expected: expected,
