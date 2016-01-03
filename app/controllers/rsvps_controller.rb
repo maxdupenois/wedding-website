@@ -5,7 +5,7 @@ class RsvpsController < ApplicationController
   def index
     expected = (ENV['EXPECTED_RSVP_COUNT'] || 10).to_i
     render :index, locals: {
-      rsvps: Rsvp.order('name desc'),
+      rsvps: Rsvp.order('name asc'),
       expected: expected,
       progress: Rsvp.count / expected.to_f * 100
     }
