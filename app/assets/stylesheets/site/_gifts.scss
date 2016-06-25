@@ -21,21 +21,21 @@
   background-position: center center;
   background-size: 100%;
   &.holiday {
-    background-image: url('./beach.png');
+    background-image: image-url('beach.png');
     span {
       color: #ddd;
     }
   }
 
   &.wedding-list {
-    background-image: url('./giftlist.png');
+    background-image: image-url('giftlist.png');
     background-size: auto 100%;
     span {
       color: #ddd;
     }
   }
   &.artwork {
-    background-image: url('./artwork.png');
+    background-image: image-url('artwork.png');
     span {
       color: #ddd;
     }
