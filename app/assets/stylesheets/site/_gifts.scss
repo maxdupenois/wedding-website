@@ -1,0 +1,43 @@
+.submit {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $silver;
+  height: 200px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  &:hover, &:active {
+    text-decoration: none;
+    border-color: #337ab7;
+    opacity: 0.8;
+  }
+  span {
+    text-decoration: none;
+    padding-bottom: 10px;
+    font-size: 1.1em;
+    text-align: center;
+  }
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  &.holiday {
+    background-image: url('./beach.png');
+    span {
+      color: #ddd;
+    }
+  }
+
+  &.wedding-list {
+    background-image: url('./giftlist.png');
+    background-size: auto 100%;
+    span {
+      color: #ddd;
+    }
+  }
+  &.artwork {
+    background-image: url('./artwork.png');
+    span {
+      color: #ddd;
+    }
+  }
+}

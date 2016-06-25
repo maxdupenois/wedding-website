@@ -2,7 +2,101 @@
   .col-sm-12
     %h1 Gifts
     %p
-      Nah we're good. Cheers though. Although if you're super keen
-      we're probably going to do a "contribute to our honeymoon" type
-      thing. You could enjoy photos of us on a beach spending your
-      money on cocktails.
+      Jen and I have been doing the whole living together thing
+      for a while now and all we really want is for you to turn
+      up and enjoy yourselves. If, however, the thought of not
+      gifting drives you into a weird state of anxiety<sup>*</sup>      then we have some options below. You can offer to pay
+      for some of our honeymoon, some art to turn our fledgling
+      home into a fledgling Tate or you can go the traditional
+      route of the wedding list. The first two options will open
+      a small window where you can enter the amount and any
+      relevant message after which you'll be taken to a paypal
+      page, the third will take
+      you to a John Lewis page where you can enter the list
+      number.
+
+    %p
+      <sup>*</sup> In which case you may be suffering from
+      acute Britishness, check with your GP for treatment options.
+
+<hr/>
+.row
+  .col-sm-4
+    :plain
+      <form class='paypal' data-type='honeymoon' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick"/>
+        <input type="hidden" name="hosted_button_id" value="4A6BBNXY7EMAG">
+        <a href='#' class='submit holiday'><span>Leveling up our Honeymoon</span></a>
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+  .col-sm-4
+    :plain
+      <form class='paypal' data-type='artwork' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="UJF4L8VR84YSJ">
+        <a href='#' class='submit artwork'><span>Beautify our house with art</span></a>
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
+  .col-sm-4
+    %a{ href: 'https://www.johnlewisgiftlist.com/giftint/JSPs/GiftList/BuyGifts/GuestFindAList.jsp', class: 'submit wedding-list' }
+      %span Or the more traditional wedding list<br/>(list no.: ####)
+
+#paymentModal.modal.fade
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button{ type: 'button', class: 'close', data: { dismiss: 'modal' }, aria: { label: 'close' } }
+          %span{ aria: { hidden: true } } &times;
+        %h4.modal-title Payment Options
+      .modal-body
+        %form
+          %input(type="hidden" name="cmd" value="_s-xclick")
+          %input(type="hidden" name="hosted_button_id" value='')
+          %input(type="hidden" name="on0" value='message')
+          %img(alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1")
+          .input-group
+            %span.input-group-addon &pound;
+            %input{ type: "text",
+              placeholder: "amount",
+              class: 'form-control',
+              name: "amount"}
+          %br
+          .form-group
+            %label{ for: 'os0' } Message (any preferences as to how the gift is spent?):
+            %textarea{ name: 'os0', class: 'form-control' }
+          .form-group
+            %input{ type: 'submit', value: 'Submit', class: 'btn btn-default' }
+
+
+
+- content_for(:after_javascript_load) do
+  :javascript
+    var transformModal = function($modal, $form){
+      var $modalForm = $('form', $modal);
+      var $modalTitle = $('h4', $modal);
+      var $hostedButtonId = $('input[name=hosted_button_id]', $form);
+      var $modalHostedButtonId = $('input[name=hosted_button_id]', $modal);
+      $modalForm.attr('action', $form.attr('action'));
+      $modalHostedButtonId.val($hostedButtonId.val());
+      if($form.data('type') === 'honeymoon') {
+        $modalTitle.text('Level up the Honeymoon');
+      } else {
+        $modalTitle.text('Beautify the House');
+      }
+    };
+
+    $(function(){
+      var $modal = $('#paymentModal');
+
+      $('form.paypal a.submit').each(function(_, el){
+        $(el).on('click', function(evt){
+          evt.preventDefault();
+          var $form = $(this).parent('form');
+          transformModal($modal, $form);
+          $modal.modal('show');
+          //$(this).parent('form').submit();
+        });
+      });
+    });
